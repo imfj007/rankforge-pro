@@ -2,6 +2,7 @@ services:
   - type: web
     name: rankforge-pro-backend
     env: node
+    plan: free
     rootDir: server
     buildCommand: npm install
     startCommand: node index.js
@@ -9,7 +10,7 @@ services:
       - key: PORT
         value: 10000
       - key: FRONTEND_URL
-        sync: false # You will enter this in the dashboard
+        sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: ADMIN_PASSWORD
