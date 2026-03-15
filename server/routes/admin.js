@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { v4: uuidv4 } = require('uuid');
+const crypto = require('crypto');
 const { supabase, HARDCODED_KEYS, usageTracker, validateLicenseKey } = require('../lib/supabase');
 
 // Simple admin auth middleware
@@ -27,7 +27,7 @@ router.post('/generate-key', adminAuth, async (req, res) => {
       new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
 
     for (let i = 0; i < Math.min(count, 50); i++) {
-      const key = `RF-${plan.toUpperCase().substring(0, 3)}-${uuidv4().substring(0, 8).toUpperCase()}`;
+      const key = `RF-${plan.toUpperCase().substring(0, 3)}-${crypto.randomUUID().substring(0, 8).toUpperCase()}`;
       keys.push({
         key,
         plan,
