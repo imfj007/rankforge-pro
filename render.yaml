@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: rankforge-pro-backend
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: FRONTEND_URL
+        sync: false # You will enter this in the dashboard
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ADMIN_PASSWORD
+        value: rankforge_admin_2024
